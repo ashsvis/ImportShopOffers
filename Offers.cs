@@ -24,7 +24,7 @@ namespace ImportShopOffers
             {
                 var offer = new Offer()
                     {
-                        Id = int.Parse(offerElement.Attribute("id").Value),
+                        Id = offerElement.Attribute("id").Value,
                         Available = bool.Parse(offerElement.Attribute("available").Value),
                     };
                 offer.SetContent(offerElement);
@@ -40,9 +40,9 @@ namespace ImportShopOffers
     {
         private XElement _content;
 
-        public int Id { get; set; }
+        public string Id { get; set; }
         public bool Available { get; set; }
-        public int CategoryId { get; set; }
+        public string CategoryId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
 
@@ -70,7 +70,7 @@ namespace ImportShopOffers
                 switch (name)
                 {
                     case "categoryId":
-                        CategoryId = int.Parse(item.Value);
+                        CategoryId = item.Value;
                         break;
                     case "name":
                         Name = Helper.CleanFromHtml(item.Value);
